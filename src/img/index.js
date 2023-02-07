@@ -1,5 +1,5 @@
 import Background from './Background.svg'
-import Correo from './Correo.svg'
+import Email from './Email.svg'
 import Edit from './Edit.svg'
 import Key from './Key.svg'
 import Logo from './Logo.svg'
@@ -10,7 +10,7 @@ import ImgIcon from './ImgIcon.svg'
 
 export {
     Background
-    , Correo
+    , Email
     , Edit
     , Key
     , Logo

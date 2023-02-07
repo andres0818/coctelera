@@ -1,0 +1,94 @@
+.register {
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    position: absolute;
+    transform: translateY(120px);
+
+
+    &__title {
+
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 22px;
+        color: #622FCF;
+        margin-bottom: 18px;
+
+    }
+
+    &__form {
+
+        width: 250px;
+        height: 40px;
+        margin: 10px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        padding: 5px;
+        gap: 13px;
+
+    }
+
+    &__icon {
+
+        width: 20px;
+
+       
+    }
+
+    &__input {
+
+        width: 100%;
+        border: none;
+        outline: none;
+
+    }
+
+    &__submit {
+
+        width: 150px;
+        height: 40px;
+        margin-top: 5px;
+        font-family: 'Lato';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        background: #622FCF;
+        color: #FFFFFF;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+
+
+    }
+
+    &__question {
+
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: white;
+
+    }
+
+    &__quiestionBtn {
+
+        margin-top: 14px;
+        margin-left: 6px;
+        border: none;
+        background: transparent;
+        color: #622FCF;
+        font-weight: 400;
+        font-size: 14px;
+        cursor: pointer;
+
+    }
+}
