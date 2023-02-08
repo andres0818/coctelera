@@ -57,15 +57,20 @@
         line-height: 17px;
         background: #343434b4;
         display: none;
+        z-index: 2;
 
         @media(max-width:414px) {
             width: calc(100vw - 42px);
-
         }
 
         li {
             margin: 10px 0;
             font-weight: bold;
+            cursor: pointer;
+
+            &:hover{
+                background-color: #343434;
+            }
         }
     }
 

@@ -6,14 +6,13 @@ const Navbar = () => {
 
   const [display, setDisplay] = useState<string>('none')
 
-const navigate:NavigateFunction =useNavigate()
+  const navigate: NavigateFunction = useNavigate()
 
   const handlerFocus = () => {
     const button = document.querySelector('.nabvar__list') as HTMLButtonElement;
     setDisplay(button.style.display)
 
     if (display === 'none') {
-      console.log(button)
       button.style.display = 'block';
       setDisplay('block');
     }
@@ -22,7 +21,6 @@ const navigate:NavigateFunction =useNavigate()
       setDisplay('none')
     }
   };
-
 
 
   const handlerNavigate = (e: any) => {
@@ -43,7 +41,7 @@ const navigate:NavigateFunction =useNavigate()
       </button>
 
       <ul className='nabvar__list'>
-        <li onClick={() => handlerNavigate('realizarPedidos')} >Realizar Pedidos</li>
+        <li onClick={() => handlerNavigate('')} >Realizar Pedidos</li>
         <li onClick={() => handlerNavigate('pedidosComanda')} >Pedidos (Comanda)</li>
         <li onClick={() => handlerNavigate('factura')} >Factura</li>
         <li onClick={() => handlerNavigate('reporteVentas')} >Reporte Ventas Diarias</li>
