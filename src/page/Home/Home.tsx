@@ -14,12 +14,12 @@ const Home = () => {
   return (
     <div className='home'>
       <img className='home__logo' src={Logo} alt="" />
+
       {
         homeState === false ? <Login /> : <Register />
       }
-
-
-    </div>
+      
+          </div>
   )
 }
 

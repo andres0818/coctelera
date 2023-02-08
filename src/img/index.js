@@ -7,6 +7,7 @@ import Printer from './Printer.svg'
 import User from './User.svg'
 import UserGray from './UserGray.svg'
 import ImgIcon from './ImgIcon.svg'
+import mesa from './mesa.svg'
 
 export {
     Background
@@ -18,4 +19,5 @@ export {
     , User
     , UserGray
     , ImgIcon
+    ,mesa
 }
