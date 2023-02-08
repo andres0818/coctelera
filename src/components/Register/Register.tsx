@@ -1,41 +1,82 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Email, Key, User } from '../../img'
-import { UserDispatcherContext } from '../context/UserContext'
+import { UserDispatcherContext } from '../../context/UserContext'
+import { INITIAL_STATE, userData } from '../../types'
 
 import './Register.scss'
 
 const Register = () => {
+    const { setHomeState, createUser } = useContext(UserDispatcherContext)
+    const [userData, setUserData] = useState<userData>(INITIAL_STATE)
 
-    const { setHomeState } = useContext(UserDispatcherContext)
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setUserData({ ...userData, [event.target.name]: event.target.value });
+    };
 
-    const loginSatate = () => setHomeState(false)
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        createUser(userData);
+        setUserData(INITIAL_STATE);
+    };
 
     return (
         <div className='register'>
             <h3 className='register__title'>¡Regístrate!</h3>
-            <form className='register__formContainer'>
+            <form onSubmit={handleSubmit} className='register__formContainer'>
                 <div className='register__form'>
                     <img className='register__icon' src={User} alt="" />
-                    <input className='register__input' type="text" placeholder="Usuario" />
+                    <input
+                        required
+                        className='register__input'
+                        name='name'
+                        type="text"
+                        placeholder="Usuario"
+                        value={userData.name}
+                        onChange={handleChange}
+                    />
                 </div>
                 <div className='register__form'>
                     <img src={User} alt="" />
-                    <input className='register__input' type="text" placeholder="Nombre Completo" />
+                    <input
+                        required
+                        className='register__input'
+                        name='userName'
+                        type="text"
+                        placeholder="Nombre Completo"
+                        value={userData.userName}
+                        onChange={handleChange}
+                    />
                 </div>
                 <div className='register__form'>
                     <img src={Email} alt="" />
-                    <input className='register__input' type="text" placeholder="Correo Electronico" />
+                    <input
+                        required
+                        className='register__input'
+                        name='email'
+                        type="email"
+                        placeholder="Correo Electronico"
+                        value={userData.email}
+                        onChange={handleChange}
+                    />
                 </div>
                 <div className='register__form'>
                     <img src={Key} alt="" />
-                    <input className='register__input' type="text" placeholder="Contraseña" />
+                    <input
+                        required
+                        className='register__input'
+                        name='password'
+                        type="password"
+                        placeholder="Contraseña"
+                        value={userData.password}
+                        onChange={handleChange}
+                    />
                 </div>
                 <button className='register__submit' type="submit">
                     Registrarse
                 </button>
             </form>
             <p className='register__question'>¿Ya tienes cuenta?
-                <button onClick={() => loginSatate()} className='register__quiestionBtn'>Inicia Sesión</button>
+                <button onClick={() => setHomeState(false)} className='register__quiestionBtn'>Inicia Sesión</button>
             </p>
         </div>
     )
