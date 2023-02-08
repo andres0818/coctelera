@@ -1,14 +1,13 @@
-import { log } from 'console'
 import React from 'react'
 import { User } from '../../img'
 
 import './Login.scss'
 
-interface Login {
+interface login {
     setHomeState: Function
 }
 
-const Login = ({ setHomeState }: Login) => {
+const Login = ({ setHomeState }: login) => {
 
     const loginSatate = () => setHomeState(true)
 
