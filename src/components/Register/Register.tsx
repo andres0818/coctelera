@@ -1,14 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Email, Key, User } from '../../img'
+import { UserDispatcherContext } from '../context/UserContext'
 
 import './Register.scss'
 
-interface Login {
-    setHomeState: Function
-}
+const Register = () => {
 
-
-const Register = ({ setHomeState }: Login) => {
+    const { setHomeState } = useContext(UserDispatcherContext)
 
     const loginSatate = () => setHomeState(false)
 
@@ -37,7 +35,7 @@ const Register = ({ setHomeState }: Login) => {
                 </button>
             </form>
             <p className='register__question'>¿Ya tienes cuenta?
-                <button onClick={()=>loginSatate()} className='register__quiestionBtn'>Inicia Sesión</button>
+                <button onClick={() => loginSatate()} className='register__quiestionBtn'>Inicia Sesión</button>
             </p>
         </div>
     )

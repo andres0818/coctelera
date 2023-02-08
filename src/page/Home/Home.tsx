@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useContext, } from 'react'
+import { UserContext } from '../../components/context/UserContext'
 import Login from '../../components/Login/Login'
 import Register from '../../components/Register/Register'
 import { Logo } from '../../img'
@@ -8,13 +9,13 @@ import './Home.scss'
 
 const Home = () => {
 
-  const [homeState, setHomeState] = useState<Boolean>(true)
+  const {homeState} =useContext(UserContext)
 
   return (
     <div className='home'>
       <img className='home__logo' src={Logo} alt="" />
       {
-        homeState===false ? <Login setHomeState={setHomeState} /> : <Register setHomeState={setHomeState} />
+        homeState===false ? <Login  /> : <Register />
       }
 
 

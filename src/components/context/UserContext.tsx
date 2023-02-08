@@ -1,19 +1,33 @@
-import { createContext, useEffect, useState } from "react";
-import { auth, db } from "../api/firebase";
+import React, { createContext,  useState } from 'react';
 
-
-export const UserContext = createContext('')
-
-
-
-const UserProvider = (props: any) => {
-   return (
-      <>
-         <UserContext.Provider value={props.value}>
-            {props.children}
-         </UserContext.Provider>
-      </>
-   )
+interface UserState {
+   homeState: boolean;
 }
 
-export default UserProvider
+interface UserDispatcher {
+   setHomeState: (value: boolean) => void;
+}
+
+interface UserProps {
+   children: React.ReactNode;
+}
+
+export const UserContext = createContext<UserState>({ homeState: true });
+export const UserDispatcherContext = createContext<UserDispatcher>({ setHomeState: () => { } });
+
+const UserProvider = (props: UserProps) => {
+   const [homeState, setHomeState] = useState<boolean>(true);
+
+   const state = { homeState };
+   const dispatcher = { setHomeState };
+
+   return (
+      <UserDispatcherContext.Provider value={dispatcher}>
+         <UserContext.Provider value={state}>
+            {props.children}
+         </UserContext.Provider>
+      </UserDispatcherContext.Provider>
+   );
+};
+
+export default UserProvider;

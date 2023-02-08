@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { User } from '../../img'
+import { UserDispatcherContext } from '../context/UserContext'
 
 import './Login.scss'
 
-interface login {
-    setHomeState: Function
-}
 
-const Login = ({ setHomeState }: login) => {
+const Login = () => {
+
+    const {setHomeState} =useContext(UserDispatcherContext)
 
     const loginSatate = () => setHomeState(true)
+
+
 
     return (
         <div className='login'>
