@@ -3,8 +3,15 @@ import { Email, Key, User } from '../../img'
 
 import './Register.scss'
 
+interface Login {
+    setHomeState: Function
+}
 
-const Register = () => {
+
+const Register = ({ setHomeState }: Login) => {
+
+    const loginSatate = () => setHomeState(false)
+
     return (
         <div className='register'>
             <h3 className='register__title'>¡Regístrate!</h3>
@@ -30,7 +37,7 @@ const Register = () => {
                 </button>
             </form>
             <p className='register__question'>¿Ya tienes cuenta?
-                <button className='register__quiestionBtn'>Inicia Sesión</button>
+                <button onClick={()=>loginSatate()} className='register__quiestionBtn'>Inicia Sesión</button>
             </p>
         </div>
     )

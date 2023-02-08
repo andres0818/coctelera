@@ -1,9 +1,17 @@
+import { log } from 'console'
 import React from 'react'
 import { User } from '../../img'
 
 import './Login.scss'
 
-const Login = () => {
+interface Login {
+    setHomeState: Function
+}
+
+const Login = ({ setHomeState }: Login) => {
+
+    const loginSatate = () => setHomeState(true)
+
     return (
         <div className='login'>
             <h3 className='login__title'>Iniciar Sesión</h3>
@@ -21,7 +29,7 @@ const Login = () => {
                 </button>
             </form>
             <p className='login__question'>Aún no tienes cuenta?
-                <button className='login__quiestionBtn'>Registrate</button>
+                <button onClick={() => loginSatate()} className='login__quiestionBtn'>Registrate</button>
             </p>
         </div>
     )
