@@ -15,7 +15,6 @@ const Login = () => {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserData({ ...userData, [event.target.name]: event.target.value })
-        console.log(userData.email, userData.password);
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

@@ -59,7 +59,7 @@ const UserProvider = (props: UserProps) => {
       signInWithEmailAndPassword(auth, user.email, user.password)
          .then(() => {
          
-            navigate('login')
+            navigate('/cocktails')
          })
          .catch((err: any) => console.log(err));
    };
