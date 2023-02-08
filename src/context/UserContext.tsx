@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'fire
 import { addDoc, collection, onSnapshot } from 'firebase/firestore';
 import { auth, db, } from '../components/api/firebase';
 import { UserDispatcher, UserProps, UserState } from '../types';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -18,17 +19,14 @@ export const UserDispatcherContext = createContext<UserDispatcher>({
 const UserProvider = (props: UserProps) => {
 
    const [homeState, setHomeState] = useState<boolean>(true);
-
    const [dataUser, setDataUser] = useState<any>([]);
+   const navigate = useNavigate()
 
 
 
    const data = () => {
-      
       onSnapshot(collection(db, "users"), (snapshot) => {
-         snapshot.forEach((doc) => {
-            console.log(doc.data());
-         });
+         setDataUser(snapshot.docs.map((doc) => { return { ...doc.data(), id: doc.id } }));
       });
    };
 
@@ -49,16 +47,20 @@ const UserProvider = (props: UserProps) => {
                   email: result.user.email,
                   user: user.name,
                   name: user.userName
-
                });
             }
+            setHomeState(false);
          })
-         .catch((err: any) => console.log(err));
+         .catch((err: any) => console.log(err.message));
    };
 
 
    const loginUser = (user: { email: string; password: string }) => {
       signInWithEmailAndPassword(auth, user.email, user.password)
+         .then(() => {
+         
+            navigate('login')
+         })
          .catch((err: any) => console.log(err));
    };
 

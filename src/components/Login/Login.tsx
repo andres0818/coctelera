@@ -1,32 +1,39 @@
-import React, { useContext } from 'react'
-import { User } from '../../img'
+import React, { useContext, useState } from 'react'
+import { Email, Key } from '../../img'
 import { UserDispatcherContext } from '../../context/UserContext'
 
 import './Login.scss'
+import { INITIAL_LOGIN, userLogin } from '../../types'
 
 
 const Login = () => {
 
-    const { setHomeState,loginUser } = useContext(UserDispatcherContext)
+    const { setHomeState, loginUser } = useContext(UserDispatcherContext)
 
     const loginSatate = () => setHomeState(true)
+    const [userData, setUserData] = useState<userLogin>(INITIAL_LOGIN)
 
-    const validationLogin= ()=>{
-       
-    }
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setUserData({ ...userData, [event.target.name]: event.target.value })
+        console.log(userData.email, userData.password);
+    };
 
-
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        loginUser(userData);
+        setUserData(INITIAL_LOGIN);
+    };
     return (
         <div className='login'>
             <h3 className='login__title'>Iniciar Sesión</h3>
-            <form >
+            <form onSubmit={handleSubmit} >
                 <div className='login__form'>
-                    <img className='login__icon' src={User} alt="" />
-                    <input className='login__input' type="text" placeholder="Usuario" />
+                    <img className='login__icon' src={Email} alt="" />
+                    <input onChange={handleChange} className='login__input' name='email' type="text" placeholder="Correo" />
                 </div>
                 <div className='login__form'>
-                    <img src={User} alt="" />
-                    <input className='login__input' type="text" placeholder="Nombre Completo" />
+                    <img src={Key} alt="" />
+                    <input onChange={handleChange} className='login__input' type="text" name='password' placeholder="Contraseña" />
                 </div>
                 <button className='login__submit' type="submit">
                     Iniciar sesión

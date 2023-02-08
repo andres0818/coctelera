@@ -12,9 +12,14 @@ export interface UserState {
 export interface UserDispatcher {
     setHomeState: (value: boolean) => void;
     createUser: (user: { email: string; password: string, userName: string, name: string }) => void;
-    loginUser: (user: { email: string; password: string, userName: string, name: string }) => void;
+    loginUser: (user: { email: string; password: string}) => void;
 }
 
 export interface UserProps {
     children: React.ReactNode;
+}
+
+export interface userLogin {
+    email: string;
+    password: string;
 }
