@@ -1,5 +1,4 @@
-.register {
-
+.login {
     display: flex;
     align-items: center;
     text-align: center;
@@ -38,7 +37,7 @@
     &__icon {
 
         width: 20px;
-       
+
     }
 
     &__input {
@@ -90,4 +89,5 @@
         cursor: pointer;
 
     }
+
 }
