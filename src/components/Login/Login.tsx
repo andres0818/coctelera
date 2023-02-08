@@ -1,16 +1,19 @@
 import React, { useContext } from 'react'
 import { User } from '../../img'
-import { UserDispatcherContext } from '../context/UserContext'
+import { UserDispatcherContext } from '../../context/UserContext'
 
 import './Login.scss'
 
 
 const Login = () => {
 
-    const {setHomeState} =useContext(UserDispatcherContext)
+    const { setHomeState,loginUser } = useContext(UserDispatcherContext)
 
     const loginSatate = () => setHomeState(true)
 
+    const validationLogin= ()=>{
+       
+    }
 
 
     return (
