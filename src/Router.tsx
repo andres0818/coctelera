@@ -11,7 +11,7 @@ import ReporteVentas from './ReporteVentas/ReporteVentas'
 const Rotuer = () => {
     return (
         <Routes>
-            <Route path='/home' element={<Home />} />
+            <Route path='/' element={<Home />} />
 
             <Route path='/cocktails' element={<Coktails />} >
                 <Route path='/cocktails' element={<RealizarPedidos />} />
