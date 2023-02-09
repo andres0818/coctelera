@@ -41,7 +41,7 @@ const Navbar = () => {
       </button>
 
       <ul className='nabvar__list'>
-        <li onClick={() => handlerNavigate('')} >Realizar Pedidos</li>
+        <li onClick={() => handlerNavigate('')} >Mesas</li>
         <li onClick={() => handlerNavigate('pedidosComanda')} >Pedidos (Comanda)</li>
         <li onClick={() => handlerNavigate('factura')} >Factura</li>
         <li onClick={() => handlerNavigate('reporteVentas')} >Reporte Ventas Diarias</li>

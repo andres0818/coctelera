@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { mesa } from '../img'
-import './RealizarPedidos.scss'
+import './Mesas.scss'
 
 const tables = [1, 2, 3, 4, 5, 6]
 
-const RealizarPedidos = () => {
+const Mesas = () => {
 
   const [occupiedTables,setOccupiedTables]=useState<number[]>([])
 
@@ -26,19 +26,19 @@ const RealizarPedidos = () => {
   }
 
   return (
-    <div className='RealizarPedidos'>
-      <h1 className='RealizarPedidos__title'>Cocktails</h1>
-      <div className='RealizarPedidos__container' >
+    <div className='Mesas'>
+      <h1 className='Mesas__title'>Cocktails</h1>
+      <div className='Mesas__container' >
         {
           tables.map((id) => {
             return (
-              <div className='RealizarPedidos__card' id={`checkbox${id}`} key={id}>
+              <div className='Mesas__card' id={`checkbox${id}`} key={id}>
 
                 <input onClick={(element) => handlerCheckbox(id, element)} type="checkbox" id={`checkbox-${id}`} />
                 <label htmlFor={`checkbox-${id}`} ></label>
 
                 <div className='contenedor'>
-                  <img className='RealizarPedidos__img' id={`img_checkbox${id}`} src={mesa} alt="mesa" />
+                  <img className='Mesas__img' id={`img_checkbox${id}`} src={mesa} alt="mesa" />
                   <p>{id}</p>
                 </div>
               </div>
@@ -51,4 +51,4 @@ const RealizarPedidos = () => {
   )
 }
 
-export default RealizarPedidos
+export default Mesas

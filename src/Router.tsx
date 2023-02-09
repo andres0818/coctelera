@@ -3,10 +3,10 @@ import Home from './page/Home/Home'
 
 import './Router.scss'
 import Coktails from './page/coktails/Coktails'
-import RealizarPedidos from './RealizarPedidos/RealizarPedidos'
 import PedidosComanda from './PedidosComanda/PedidosComanda'
 import Factura from './Factura/Factura'
 import ReporteVentas from './ReporteVentas/ReporteVentas'
+import Mesas from './RealizarPedidos/Mesas'
 
 const Rotuer = () => {
     return (
@@ -14,7 +14,7 @@ const Rotuer = () => {
             <Route path='/' element={<Home />} />
 
             <Route path='/cocktails' element={<Coktails />} >
-                <Route path='/cocktails' element={<RealizarPedidos />} />
+                <Route path='/cocktails' element={<Mesas />} />
                 <Route path='/cocktails/pedidosComanda' element={<PedidosComanda />} />
                 <Route path='/cocktails/factura' element={<Factura />} />
                 <Route path='/cocktails/reporteVentas' element={<ReporteVentas />} />
