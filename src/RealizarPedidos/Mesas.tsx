@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { UserContext, UserDispatcherContext } from '../context/UserContext'
 import { mesa } from '../img'
 import './Mesas.scss'
@@ -35,11 +35,14 @@ const Mesas = () => {
 
   useEffect(() => {
     tables.forEach((id) => {
-      
+
       const checkbox = document.getElementById(`checkbox-${id}`) as HTMLInputElement;
       const checkboxContiner = document.getElementById(`checkbox${id}`)
 
-      if (checkbox && occupiedTables.includes(id)) checkboxContiner && (checkboxContiner.style.opacity = "0.5");
+      if (checkbox && occupiedTables.includes(id)) {
+        checkbox.checked = true;
+        checkboxContiner && (checkboxContiner.style.opacity = "0.5");
+      }
 
       else if (checkboxContiner) checkboxContiner.style.opacity = "1"
 
