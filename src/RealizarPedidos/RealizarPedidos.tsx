@@ -1,26 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { mesa } from '../img'
 import './RealizarPedidos.scss'
 
+const tables = [1, 2, 3, 4, 5, 6]
+
 const RealizarPedidos = () => {
 
-  const tables = [1, 2, 3, 4, 5, 6]
+  const [occupiedTables,setOccupiedTables]=useState<number[]>([])
+
+
+  const handlerCheckbox = (id: number, element: React.MouseEvent<HTMLInputElement>) => {
+
+    const checkboxContiner = document.getElementById(`checkbox${id}`)
+
+    if ((element.target as HTMLInputElement).checked) {
+      if (checkboxContiner) {
+        checkboxContiner.style.opacity = "0.5"
+      }
+    } else {
+      if (checkboxContiner) {
+        checkboxContiner.style.opacity = "1"
+      }
+    }
+
+  }
 
   return (
     <div className='RealizarPedidos'>
       <h1 className='RealizarPedidos__title'>Cocktails</h1>
       <div className='RealizarPedidos__container' >
         {
-          tables.map((e, i) => {
+          tables.map((id) => {
             return (
-              <div className='RealizarPedidos__card' key={i}>
+              <div className='RealizarPedidos__card' id={`checkbox${id}`} key={id}>
 
-                <input type="checkbox" id={`checkbox${e}`} />
-                <label htmlFor={`checkbox${e}`} ></label>
+                <input onClick={(element) => handlerCheckbox(id, element)} type="checkbox" id={`checkbox-${id}`} />
+                <label htmlFor={`checkbox-${id}`} ></label>
 
                 <div className='contenedor'>
-                  <img className='RealizarPedidos__img' src={mesa} alt="mesa" />
-                  <p>{e}</p>
+                  <img className='RealizarPedidos__img' id={`img_checkbox${id}`} src={mesa} alt="mesa" />
+                  <p>{id}</p>
                 </div>
               </div>
             )
