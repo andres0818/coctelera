@@ -8,6 +8,8 @@ import User from './User.svg'
 import UserGray from './UserGray.svg'
 import ImgIcon from './ImgIcon.svg'
 import mesa from './mesa.svg'
+import ordersFooter from './ordersFooter.svg'
+import check from './check.svg'
 
 export {
     Background
@@ -20,4 +22,6 @@ export {
     , UserGray
     , ImgIcon
     ,mesa
+    ,ordersFooter
+    ,check
 }
