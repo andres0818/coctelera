@@ -2,22 +2,28 @@ import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { addDoc, collection, onSnapshot } from 'firebase/firestore';
 import { auth, db, } from '../components/api/firebase';
-import { UserDispatcher, UserProps, UserState } from '../types';
+import { Cocktail, UserDispatcher, UserProps, UserState } from '../types';
 import { useNavigate } from 'react-router-dom';
+import { INITIAL_COCKTAIL } from '../types/initialState';
+import { getApi } from '../components/api/api';
 
 
 
 export const UserContext = createContext<UserState>({
    homeState: true,
-   occupiedTables: []
+   occupiedTables: [],
+   nameTable: '',
+   dataCocktails: [],
 });
 export const UserDispatcherContext = createContext<UserDispatcher>({
    setHomeState: () => { },
    createUser: () => { },
    loginUser: () => { },
    navigate: () => { },
-   setOccupiedTables: () => { }
+   setOccupiedTables: () => { },
+   setNameTable: () => { },
 });
+
 
 
 
@@ -26,8 +32,20 @@ const UserProvider = (props: UserProps) => {
    const [homeState, setHomeState] = useState<boolean>(true);
    const [dataUser, setDataUser] = useState<any>([]);
    const [occupiedTables, setOccupiedTables] = useState<number[]>([])
+   const [nameTable, setNameTable] = useState<string>('')
+   const [dataCocktails, setDataCocktails] = useState<Cocktail[]>([]);
 
    const navigate = useNavigate()
+
+
+   const getDataApi = async () => {
+      const newData = await getApi()
+      setDataCocktails(newData)
+   }
+
+   useEffect(() => {
+      getDataApi()
+   }, [])
 
 
 
@@ -72,8 +90,8 @@ const UserProvider = (props: UserProps) => {
    };
 
 
-   const state = { homeState, occupiedTables };
-   const dispatcher = { setHomeState, createUser, loginUser, navigate, setOccupiedTables };
+   const state = { homeState, occupiedTables, nameTable, dataCocktails };
+   const dispatcher = { setHomeState, createUser, loginUser, navigate, setOccupiedTables, setNameTable };
 
    return (
       <UserDispatcherContext.Provider value={dispatcher}>
