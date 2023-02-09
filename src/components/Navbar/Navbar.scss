@@ -6,7 +6,9 @@
     align-items: center;
     background-color: #343434;
     gap: 50px;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 
 
     &__button {
@@ -68,7 +70,7 @@
             font-weight: bold;
             cursor: pointer;
 
-            &:hover{
+            &:hover {
                 background-color: #343434;
             }
         }
