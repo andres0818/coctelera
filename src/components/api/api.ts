@@ -1,15 +1,16 @@
-import axios from "axios";
+import Axios from "axios";
 
-const api = axios.create({
-    baseURL: "www.thecocktaildb.com/api/json/v1/1/filter.php?"
+ const api = Axios.create({
+    baseURL: "https://www.thecocktaildb.com"
 })
-
+ 
 
 export const getApi = async () => {
     try {
-        const response = await api.get('a=Alcoholic');
-        return response.data;
+        const response = await api.get('/api/json/v1/1/filter.php?a=Alcoholic');
+        return response.data.drinks;
     } catch (error) {
         console.log(error);
     }
 }
+
