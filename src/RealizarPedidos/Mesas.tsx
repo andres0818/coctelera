@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { UserContext, UserDispatcherContext } from '../context/UserContext'
 import { mesa } from '../img'
 import './Mesas.scss'
 
@@ -6,24 +7,52 @@ const tables = [1, 2, 3, 4, 5, 6]
 
 const Mesas = () => {
 
-  const [occupiedTables,setOccupiedTables]=useState<number[]>([])
+
+  const { navigate, setOccupiedTables } = useContext(UserDispatcherContext)
+  const { occupiedTables } = useContext(UserContext)
 
 
   const handlerCheckbox = (id: number, element: React.MouseEvent<HTMLInputElement>) => {
 
-    const checkboxContiner = document.getElementById(`checkbox${id}`)
-
     if ((element.target as HTMLInputElement).checked) {
-      if (checkboxContiner) {
-        checkboxContiner.style.opacity = "0.5"
-      }
-    } else {
-      if (checkboxContiner) {
-        checkboxContiner.style.opacity = "1"
-      }
+
+      const validityTable = occupiedTables.filter(e => e === id)
+      validityTable[0] !== id && setOccupiedTables([...occupiedTables, id])
+
     }
 
+    else {
+      const index = occupiedTables.indexOf(id)
+
+      if (index > -1) {
+
+        setOccupiedTables(
+          occupiedTables.filter((table: number) => table !== id)
+        )
+      }
+    }
   }
+
+  useEffect(() => {
+    tables.forEach((id) => {
+      
+      const checkbox = document.getElementById(`checkbox-${id}`) as HTMLInputElement;
+      const checkboxContiner = document.getElementById(`checkbox${id}`)
+
+      if (checkbox && occupiedTables.includes(id)) checkboxContiner && (checkboxContiner.style.opacity = "0.5");
+
+      else if (checkboxContiner) checkboxContiner.style.opacity = "1"
+
+    });
+  }, [occupiedTables]);
+
+
+
+
+  const handlerNavigate = (id: number) => {
+    navigate(`/cocktails/mesa${id}`)
+  }
+
 
   return (
     <div className='Mesas'>
@@ -38,7 +67,11 @@ const Mesas = () => {
                 <label htmlFor={`checkbox-${id}`} ></label>
 
                 <div className='contenedor'>
-                  <img className='Mesas__img' id={`img_checkbox${id}`} src={mesa} alt="mesa" />
+                  {
+                    occupiedTables.includes(id)
+                      ? <img onClick={() => handlerNavigate(id)} src={mesa} alt='mesa' className='Mesas__mesa' />
+                      : <img src={mesa} alt='mesa' className='Mesas__mesa' />
+                  }
                   <p>{id}</p>
                 </div>
               </div>

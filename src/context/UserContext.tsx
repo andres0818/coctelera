@@ -7,11 +7,16 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-export const UserContext = createContext<UserState>({ homeState: true });
+export const UserContext = createContext<UserState>({
+   homeState: true,
+   occupiedTables: []
+});
 export const UserDispatcherContext = createContext<UserDispatcher>({
    setHomeState: () => { },
    createUser: () => { },
    loginUser: () => { },
+   navigate: () => { },
+   setOccupiedTables: () => { }
 });
 
 
@@ -20,6 +25,8 @@ const UserProvider = (props: UserProps) => {
 
    const [homeState, setHomeState] = useState<boolean>(true);
    const [dataUser, setDataUser] = useState<any>([]);
+   const [occupiedTables, setOccupiedTables] = useState<number[]>([])
+
    const navigate = useNavigate()
 
 
@@ -58,15 +65,15 @@ const UserProvider = (props: UserProps) => {
    const loginUser = (user: { email: string; password: string }) => {
       signInWithEmailAndPassword(auth, user.email, user.password)
          .then(() => {
-         
+
             navigate('/cocktails')
          })
          .catch((err: any) => console.log(err));
    };
 
 
-   const state = { homeState };
-   const dispatcher = { setHomeState, createUser, loginUser };
+   const state = { homeState, occupiedTables };
+   const dispatcher = { setHomeState, createUser, loginUser, navigate, setOccupiedTables };
 
    return (
       <UserDispatcherContext.Provider value={dispatcher}>

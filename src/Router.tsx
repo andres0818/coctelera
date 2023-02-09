@@ -15,6 +15,7 @@ const Rotuer = () => {
 
             <Route path='/cocktails' element={<Coktails />} >
                 <Route path='/cocktails' element={<Mesas />} />
+                <Route path='/cocktails/:cocktailsId' element={<h1>Estamos en la mesa</h1>} />
                 <Route path='/cocktails/pedidosComanda' element={<PedidosComanda />} />
                 <Route path='/cocktails/factura' element={<Factura />} />
                 <Route path='/cocktails/reporteVentas' element={<ReporteVentas />} />
