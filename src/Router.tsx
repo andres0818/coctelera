@@ -3,10 +3,11 @@ import Home from './page/Home/Home'
 
 import './Router.scss'
 import Coktails from './page/coktails/Coktails'
-import PedidosComanda from './PedidosComanda/PedidosComanda'
-import Factura from './Factura/Factura'
-import ReporteVentas from './ReporteVentas/ReporteVentas'
-import Mesas from './RealizarPedidos/Mesas'
+import PedidosComanda from './components/PedidosComanda/PedidosComanda'
+import Factura from './components/Factura/Factura'
+import ReporteVentas from './components/ReporteVentas/ReporteVentas'
+import Mesas from './components/Mesas/Mesas'
+import PedidosMesa from './components/PedidosMesa/PedidosMesa'
 
 const Rotuer = () => {
     return (
@@ -15,7 +16,7 @@ const Rotuer = () => {
 
             <Route path='/cocktails' element={<Coktails />} >
                 <Route path='/cocktails' element={<Mesas />} />
-                <Route path='/cocktails/:cocktailsId' element={<h1>Estamos en la mesa</h1>} />
+                <Route path='/cocktails/:cocktailsId' element={<PedidosMesa />} />
                 <Route path='/cocktails/pedidosComanda' element={<PedidosComanda />} />
                 <Route path='/cocktails/factura' element={<Factura />} />
                 <Route path='/cocktails/reporteVentas' element={<ReporteVentas />} />
