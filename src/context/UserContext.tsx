@@ -4,7 +4,6 @@ import { addDoc, collection, onSnapshot } from 'firebase/firestore';
 import { auth, db, } from '../components/api/firebase';
 import { Cocktail, UserDispatcher, UserProps, UserState } from '../types';
 import { useNavigate } from 'react-router-dom';
-import { INITIAL_COCKTAIL } from '../types/initialState';
 import { getApi } from '../components/api/api';
 
 
@@ -95,7 +94,9 @@ const UserProvider = (props: UserProps) => {
 
    return (
       <UserDispatcherContext.Provider value={dispatcher}>
-         <UserContext.Provider value={state}>{props.children}</UserContext.Provider>
+         <UserContext.Provider value={state}>
+            {props.children}
+         </UserContext.Provider>
       </UserDispatcherContext.Provider>
    );
 };
