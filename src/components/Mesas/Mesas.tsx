@@ -57,7 +57,8 @@ const Mesas = () => {
 
   return (
     <div className='Mesas'>
-      <h1 className='Mesas__title'>Cocktails</h1>
+      <p className='Mesas__title'>Realizar Pedidos</p>
+      <h1 className='Mesas__subTitle'>Cocktails</h1>
       <div className='Mesas__container' >
         {
           tables.map((id) => {
@@ -82,6 +83,7 @@ const Mesas = () => {
         }
       </div>
     </div>
+  
   )
 }
 

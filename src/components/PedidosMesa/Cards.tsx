@@ -27,6 +27,7 @@ const Cards = ({ e }: props) => {
                 setOrders(orders.concat([
                     {
                         id: `${nameTable} ${e.strDrink}`,
+                        table:nameTable,
                         name: e.strDrink,
                         photo: e.strDrinkThumb,
                         count: count,

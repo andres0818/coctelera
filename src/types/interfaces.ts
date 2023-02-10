@@ -24,6 +24,7 @@ export interface OrdersTables{
     name: string;
     count: number;
     photo: string;
+    table: string;
 }
 
 export interface UserState {

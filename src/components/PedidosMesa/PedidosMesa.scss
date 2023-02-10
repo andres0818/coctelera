@@ -13,6 +13,25 @@
         height: calc(100% - 60px);
     }
 
+    &__title {
+        position: fixed;
+        color: white;
+        transform: translate(-45px, -40px);
+        z-index: 4;
+        font-weight: lighter;
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    &__subTitle {
+        font-family: 'Lato';
+        font-style: italic;
+        font-weight: 800;
+        font-size: 25px;
+        line-height: 30px;
+        margin-top: 14px;
+    }
+
     &__container {
         overflow: scroll;
         width: 100%;
@@ -23,7 +42,7 @@
         justify-items: center;
         grid-template-columns: repeat(auto-fit, minmax(146px, 1fr));
 
-        @media(max-width:414px){
+        @media(max-width:414px) {
             height: 500px;
         }
     }
@@ -67,6 +86,11 @@
         padding: 1.5px;
         background: #02A337;
         border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+            filter: contrast(3)
+        }
     }
 
     &__footer {

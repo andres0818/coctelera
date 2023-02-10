@@ -10,6 +10,7 @@ import ImgIcon from './ImgIcon.svg'
 import mesa from './mesa.svg'
 import ordersFooter from './ordersFooter.svg'
 import check from './check.svg'
+import pencil from './pencil.svg'
 
 export {
     Background
@@ -21,7 +22,8 @@ export {
     , User
     , UserGray
     , ImgIcon
-    ,mesa
-    ,ordersFooter
-    ,check
+    , mesa
+    , ordersFooter
+    , check
+    , pencil
 }

@@ -5,6 +5,16 @@
     justify-content: center;
 
     &__title {
+        position: fixed;
+        color: white;
+        transform: translate(-45px, -294px);
+        z-index: 4;
+        font-weight: lighter;
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    &__subTitle {
         color: #622FCF;
         font-family: 'Lato';
         font-weight: 800;
