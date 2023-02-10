@@ -5,7 +5,6 @@ export interface userData {
     password: string;
 }
 
-
 export interface UserProps {
     children: React.ReactNode;
 }
@@ -17,6 +16,7 @@ export interface userLogin {
 export interface Cocktail {
     strDrinkThumb: string;
     strDrink: string;
+    idDrink:number
     }
     
 export interface UserState {

@@ -14,5 +14,6 @@ export const INITIAL_LOGIN: userLogin = {
 
 export const INITIAL_COCKTAIL: Cocktail = {
     strDrinkThumb: '',
-    strDrink: ''
+    strDrink: '',
+    idDrink: 0
 }
