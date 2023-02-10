@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { UserContext } from '../../context/UserContext'
 import { check } from '../../img'
-import Cards from './cards'
+import Cards from './Cards'
 
 import './PedidosMesa.scss'
 
@@ -10,7 +10,6 @@ import './PedidosMesa.scss'
 const PedidosMesa: React.FC = () => {
 
   const { nameTable, dataCocktails } = useContext(UserContext)
-  const [order, setOrder] = useState<object[]>([])
 
 
   return (
@@ -22,7 +21,7 @@ const PedidosMesa: React.FC = () => {
         {
           dataCocktails.map((e, i) => {
 
-            return <Cards order={order} setOrder={setOrder} key={i} e={e} />
+            return <Cards  key={i} e={e} />
 
           })
         }

@@ -16,14 +16,20 @@ export interface userLogin {
 export interface Cocktail {
     strDrinkThumb: string;
     strDrink: string;
-    idDrink:number
-    }
-    
+    idDrink: number
+}
+
+export interface OrdersTables{
+    name: string;
+    count: number;
+}
+
 export interface UserState {
     homeState: boolean;
     occupiedTables: number[];
     nameTable: string;
-    dataCocktails:Cocktail[];
+    dataCocktails: Cocktail[];
+    orders: OrdersTables[]
 }
 
 export interface UserDispatcher {
@@ -33,8 +39,8 @@ export interface UserDispatcher {
     navigate: (path: string) => void;
     setOccupiedTables: (value: number[]) => void;
     setNameTable: (value: string) => void;
+    setOrders: (value:React.SetStateAction<OrdersTables[]>) => void;
 }
 
 
-    
-    
+

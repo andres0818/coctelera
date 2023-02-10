@@ -1,0 +1,58 @@
+import React, { useContext, useState } from 'react'
+import { UserContext, UserDispatcherContext } from '../../context/UserContext'
+import { Cocktail } from '../../types'
+
+interface props {
+    e: Cocktail,
+    /*     order: object[]
+        setOrder: Function */
+}
+
+const Cards = ({ e }: props) => {
+    const [count, setCount] = useState<number>(0)
+    const { orders } = useContext(UserContext)
+    const { setOrders } = useContext(UserDispatcherContext)
+
+    const add = () => setCount(count + 1)
+
+    const sub = () => count > 0 && setCount(count - 1)
+
+    const addOrder = (checked: React.MouseEvent<HTMLInputElement>) => {
+        if ((checked.target as HTMLInputElement).checked) {
+            console.log(orders)
+            setOrders(orders.concat([
+                {
+                    name: e.strDrink,
+                    count: count,
+                }
+            ])
+            )
+        } else {
+            console.log(orders)
+
+            setOrders(orders.filter(order => order.name !== e.strDrink))
+        }
+    }
+
+
+
+    return (
+        <div key={e.strDrinkThumb} className='Mesas__card'>
+            <div className='pedidosMesa__checkboxContainer Mesas__checkboxContainer'>
+
+                <input onClick={(checked) => addOrder(checked)} className='Mesas__input' type='checkbox' name='' id={`${e.idDrink}`} />
+                <label className='Mesas__label' htmlFor={`${e.idDrink}`}></label>
+
+                <img className='Mesas__img' src={e.strDrinkThumb} alt='imagen' />
+                <p className='pedidosMesa__name'>{e.strDrink}</p>
+                <div className='pedidosMesa__operations'>
+                    <button className='pedidosMesa__btn' onClick={sub}>-</button>
+                    <span className='pedidosMesa__count'>{count}</span>
+                    <button className='pedidosMesa__btn' onClick={add}>+</button>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Cards
