@@ -20,8 +20,10 @@ export interface Cocktail {
 }
 
 export interface OrdersTables{
+    id:string
     name: string;
     count: number;
+    photo: string;
 }
 
 export interface UserState {

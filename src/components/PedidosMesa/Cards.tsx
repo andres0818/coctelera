@@ -4,13 +4,11 @@ import { Cocktail } from '../../types'
 
 interface props {
     e: Cocktail,
-    /*     order: object[]
-        setOrder: Function */
 }
 
 const Cards = ({ e }: props) => {
     const [count, setCount] = useState<number>(0)
-    const { orders } = useContext(UserContext)
+    const { orders, nameTable } = useContext(UserContext)
     const { setOrders } = useContext(UserDispatcherContext)
 
     const add = () => setCount(count + 1)
@@ -20,21 +18,27 @@ const Cards = ({ e }: props) => {
     const addOrder = (checked: React.MouseEvent<HTMLInputElement>) => {
         if ((checked.target as HTMLInputElement).checked) {
             console.log(orders)
-            setOrders(orders.concat([
-                {
-                    name: e.strDrink,
-                    count: count,
-                }
-            ])
-            )
-        } else {
-            console.log(orders)
 
-            setOrders(orders.filter(order => order.name !== e.strDrink))
+            const existingOrder = orders.find(order => order.id === `${nameTable} ${e.strDrink}`)
+            if (existingOrder) {
+                existingOrder.count += count
+                setCount(0)
+            } else {
+                setOrders(orders.concat([
+                    {
+                        id: `${nameTable} ${e.strDrink}`,
+                        name: e.strDrink,
+                        photo: e.strDrinkThumb,
+                        count: count,
+                    }
+                ])
+                )
+            }
+        } else {
+            setOrders(orders.filter(order => order.id !== `${nameTable} ${e.strDrink}`))
+            console.log(orders)
         }
     }
-
-
 
     return (
         <div key={e.strDrinkThumb} className='Mesas__card'>
