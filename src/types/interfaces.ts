@@ -30,10 +30,6 @@ export interface OrdersTables {
     table: string;
     price: number;
 }
-interface nameTable{
-    id: string;
-    name: string;
-}
 
 export interface UserState {
     homeState: boolean;
