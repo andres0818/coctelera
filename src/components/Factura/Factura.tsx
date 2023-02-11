@@ -25,13 +25,25 @@ const Factura = () => {
   }, [newOrder])
 
   const payAcount = () => {
-    setDailySale([
-      ...dailySale,
-      {
-        table: nameTable,
-        total: accumulator,
-      }
-    ])
+
+    const existingBill = dailySale.find(name => name.table === nameTable)
+    console.log(existingBill)
+
+    if (existingBill) {
+
+      existingBill.total += accumulator
+
+    } else {
+
+      setDailySale([
+        ...dailySale,
+        {
+          table: nameTable,
+          total: accumulator,
+        }
+      ])
+    }
+
     setOrders(deleteOrder)
     navigate('/cocktails/reporteVentas')
 
