@@ -47,7 +47,7 @@ const ReporteVentas = () => {
         <h3>Total</h3>
         <h3>${accumulator}.000</h3>
       </div>
-      <button className='reporteVentas__btnTotal'>
+      <button onClick={()=>setDailySale([])} className='reporteVentas__btnTotal'>
         <span>Total Ventas</span>
         <span>${accumulator}.000</span>
       </button>
