@@ -6,7 +6,7 @@ import './Mesas.scss'
 
 const Mesas = () => {
 
-  const tables = [1, 2, 3, 4, 5, 6]
+  const tables = [1, 2, 3, 4, 5, 6, 7, 8]
   const { navigate, setOccupiedTables, setNameTable } = useContext(UserDispatcherContext)
   const { occupiedTables } = useContext(UserContext)
 
@@ -83,7 +83,7 @@ const Mesas = () => {
         }
       </div>
     </div>
-  
+
   )
 }
 
