@@ -42,6 +42,8 @@ export interface UserState {
     dataCocktails: Cocktail[];
     orders: OrdersTables[]
     totalDay: totalBill[]
+    dailySale:totalDailySale[]
+
 }
 
 export interface UserDispatcher {
@@ -53,6 +55,7 @@ export interface UserDispatcher {
     setNameTable: (value: string) => void;
     setOrders: (value: React.SetStateAction<OrdersTables[]>) => void;
     setTotalDay: Dispatch<SetStateAction<totalBill[]>>
+    setDailySale: Dispatch<SetStateAction<totalDailySale[]>>
 }
 
 export interface totalBill {
@@ -60,4 +63,9 @@ export interface totalBill {
     total: number;
 }
 
+
+export interface totalDailySale{
+    table: string;
+    total: number;
+}
 

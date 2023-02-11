@@ -7,8 +7,8 @@ import FacturaCards from './FacturaCards'
 const Factura = () => {
 
   const [accumulator, setAccumulator] = useState<number>(0)
-  const { orders, nameTable, occupiedTables } = useContext(UserContext)
-  const { setOrders } = useContext(UserDispatcherContext)
+  const { orders, nameTable, dailySale } = useContext(UserContext)
+  const { setOrders, setDailySale } = useContext(UserDispatcherContext)
 
   const newOrder = orders.filter(order => order.table === nameTable)
   const deleteOrder = orders.filter(order => order.table !== nameTable)
@@ -25,15 +25,18 @@ const Factura = () => {
   }, [newOrder])
 
   const payAcount = () => {
-    const newFilterOccupied= occupiedTables
-
-    const idTable= ``
-
-    const table = document.getElementById(``)
-    console.log(`checkbox-`, occupiedTables)
+    setDailySale([
+      ...dailySale,
+      {
+        table: nameTable,
+        total: accumulator,
+      }
+    ])
     setOrders(deleteOrder)
-
   }
+  useEffect(
+    ()=>console.log(dailySale),[dailySale]
+  )
 
   return (
     <div className='factura'>
