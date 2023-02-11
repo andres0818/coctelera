@@ -17,7 +17,6 @@ const Cards = ({ e }: props) => {
 
     const addOrder = (checked: React.MouseEvent<HTMLInputElement>) => {
         if ((checked.target as HTMLInputElement).checked) {
-            console.log(orders)
 
             const existingOrder = orders.find(order => order.id === `${nameTable} ${e.strDrink}`)
             if (existingOrder) {
@@ -27,17 +26,18 @@ const Cards = ({ e }: props) => {
                 setOrders(orders.concat([
                     {
                         id: `${nameTable} ${e.strDrink}`,
-                        table:nameTable,
+                        table: nameTable,
                         name: e.strDrink,
                         photo: e.strDrinkThumb,
                         count: count,
+                        price: e.strDrink.length
+                        
                     }
                 ])
                 )
             }
         } else {
             setOrders(orders.filter(order => order.id !== `${nameTable} ${e.strDrink}`))
-            console.log(orders)
         }
     }
 

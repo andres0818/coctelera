@@ -66,7 +66,7 @@ const Mesas = () => {
               <div className='Mesas__card' id={`checkbox${id}`} key={id}>
 
                 <input className='Mesas__input' onClick={(element) => handlerCheckbox(id, element)} type="checkbox" id={`checkbox-${id}`} />
-                <label className='Mesas__label' htmlFor={`checkbox-${id}`} ></label>
+                <label className='Mesas__label' htmlFor={`checkbox-${id}`}  ></label>
 
                 <div className='contenedor'>
                   {

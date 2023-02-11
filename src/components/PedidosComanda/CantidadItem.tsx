@@ -23,7 +23,6 @@ const CantidadItem = ({ order,state }: Props) => {
       setOrders(prevOrders =>
         prevOrders.map(prevOrder => {
           if (prevOrder === order) {
-            console.log(prevOrder.count)
             return { ...prevOrder, count: count };
           }
           return prevOrder;

@@ -101,6 +101,7 @@
         font-weight: 400;
         font-size: 14px;
         transform: translateX(-95px + 35px);
+        cursor: default;
 
         @media(max-width: 414px) {
             width: 225px;

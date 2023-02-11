@@ -29,7 +29,7 @@ const PedidosMesa: React.FC = () => {
             })
           }
         </div>
-        <img onClick={() => navigate('/cocktails/listProducts')} className='pedidosMesa__checkImg' src={check} alt="" />
+        <img onClick={() => navigate('/cocktails/pedidosComanda')} className='pedidosMesa__checkImg' src={check} alt="" />
         <footer className='pedidosMesa__footer'>
         </footer>
       </div>

@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface userData {
     name: string;
     userName: string;
@@ -19,12 +21,18 @@ export interface Cocktail {
     idDrink: number
 }
 
-export interface OrdersTables{
-    id:string
+
+export interface OrdersTables {
+    id: string
     name: string;
     count: number;
     photo: string;
     table: string;
+    price: number;
+}
+interface nameTable{
+    id: string;
+    name: string;
 }
 
 export interface UserState {
@@ -33,6 +41,7 @@ export interface UserState {
     nameTable: string;
     dataCocktails: Cocktail[];
     orders: OrdersTables[]
+    totalDay: totalBill[]
 }
 
 export interface UserDispatcher {
@@ -42,8 +51,13 @@ export interface UserDispatcher {
     navigate: (path: string) => void;
     setOccupiedTables: (value: number[]) => void;
     setNameTable: (value: string) => void;
-    setOrders: (value:React.SetStateAction<OrdersTables[]>) => void;
+    setOrders: (value: React.SetStateAction<OrdersTables[]>) => void;
+    setTotalDay: Dispatch<SetStateAction<totalBill[]>>
 }
 
+export interface totalBill {
+    table: string;
+    total: number;
+}
 
 

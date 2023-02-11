@@ -5,7 +5,7 @@ import { auth, db, } from '../components/api/firebase';
 import { Cocktail, UserDispatcher, UserProps, UserState } from '../types';
 import { useNavigate } from 'react-router-dom';
 import { getApi } from '../components/api/api';
-import { OrdersTables } from '../types/interfaces';
+import { OrdersTables, totalBill } from '../types/interfaces';
 
 
 
@@ -14,7 +14,8 @@ export const UserContext = createContext<UserState>({
    occupiedTables: [],
    nameTable: '',
    dataCocktails: [],
-   orders:[]
+   orders: [],
+   totalDay: []
 });
 export const UserDispatcherContext = createContext<UserDispatcher>({
    setHomeState: () => { },
@@ -24,6 +25,7 @@ export const UserDispatcherContext = createContext<UserDispatcher>({
    setOccupiedTables: () => { },
    setNameTable: () => { },
    setOrders: () => { },
+   setTotalDay: () => { }
 });
 
 
@@ -37,6 +39,7 @@ const UserProvider = (props: UserProps) => {
    const [nameTable, setNameTable] = useState<string>('')
    const [dataCocktails, setDataCocktails] = useState<Cocktail[]>([]);
    const [orders, setOrders] = useState<OrdersTables[]>([])
+   const [totalDay, setTotalDay] = useState<totalBill[]>([])
 
    const navigate = useNavigate()
 
@@ -93,8 +96,8 @@ const UserProvider = (props: UserProps) => {
    };
 
 
-   const state = { homeState, occupiedTables, nameTable, dataCocktails, orders };
-   const dispatcher = { setHomeState, createUser, loginUser, navigate, setOccupiedTables, setNameTable, setOrders };
+   const state = { homeState, occupiedTables, nameTable, dataCocktails, orders, totalDay };
+   const dispatcher = { setHomeState, createUser, loginUser, navigate, setOccupiedTables, setNameTable, setOrders, setTotalDay };
 
    return (
       <UserDispatcherContext.Provider value={dispatcher}>
