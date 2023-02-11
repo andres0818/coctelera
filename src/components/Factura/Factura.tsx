@@ -38,7 +38,7 @@ const Factura = () => {
       setDailySale([
         ...dailySale,
         {
-          table: nameTable,
+          table: `${nameTable}`,
           total: accumulator,
         }
       ])
