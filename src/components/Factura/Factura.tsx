@@ -8,7 +8,7 @@ const Factura = () => {
 
   const [accumulator, setAccumulator] = useState<number>(0)
   const { orders, nameTable, dailySale } = useContext(UserContext)
-  const { setOrders, setDailySale } = useContext(UserDispatcherContext)
+  const { setOrders, setDailySale, navigate } = useContext(UserDispatcherContext)
 
   const newOrder = orders.filter(order => order.table === nameTable)
   const deleteOrder = orders.filter(order => order.table !== nameTable)
@@ -33,9 +33,11 @@ const Factura = () => {
       }
     ])
     setOrders(deleteOrder)
+    navigate('/cocktails/reporteVentas')
+
   }
   useEffect(
-    ()=>console.log(dailySale),[dailySale]
+    () => console.log(dailySale), [dailySale]
   )
 
   return (
