@@ -17,6 +17,7 @@ const Register = () => {
         event.preventDefault();
         createUser(userData);
         setUserData(INITIAL_STATE);
+        
     };
 
     return (
@@ -69,6 +70,8 @@ const Register = () => {
                         placeholder="Contraseña"
                         value={userData.password}
                         onChange={handleChange}
+                        minLength={6}
+                        maxLength={6}
                     />
                 </div>
                 <button className='register__submit' type="submit">
