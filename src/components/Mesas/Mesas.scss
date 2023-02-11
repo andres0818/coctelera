@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 .Mesas {
     display: flex;
     flex-direction: column;
@@ -5,13 +7,21 @@
     justify-content: center;
 
     &__title {
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
         position: fixed;
         color: white;
         transform: translate(-45px, -294px);
         z-index: 4;
-        font-weight: lighter;
-        font-size: 14px;
-        line-height: 17px;
+
+        @media (max-width: 414px) {
+
+            transform: translate(-45px, -310px);
+
+        }
     }
 
     &__subTitle {
@@ -24,7 +34,9 @@
 
     &__container {
         width: 100%;
+        height: 60vh;
         margin: 5% auto;
+        overflow: scroll;
         gap: 10px;
         display: grid;
         justify-items: center;
