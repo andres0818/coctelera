@@ -17,6 +17,7 @@ export const UserContext = createContext<UserState>({
    orders: [],
    totalDay: [],
    dailySale: [],
+   statusLogin: null,
 });
 export const UserDispatcherContext = createContext<UserDispatcher>({
    setHomeState: () => { },
@@ -43,19 +44,36 @@ const UserProvider = (props: UserProps) => {
    const [orders, setOrders] = useState<OrdersTables[]>([])
    const [totalDay, setTotalDay] = useState<totalBill[]>([])
    const [dailySale, setDailySale] = useState<totalDailySale[]>([])
+   const [statusLogin, setStautsLogin] = useState<any>(null)
 
    const navigate = useNavigate()
 
+   useEffect(
+      () => {
+         getDataApi()
+         data();
+         loginStatus()
+      },
+      []
+   )
+
+   const loginStatus = async () => {
+      try {
+         await new Promise(() => {
+            auth.onAuthStateChanged((log) => {
+               setStautsLogin(log)
+            });
+         });
+      } catch (error) {
+         console.log(error);
+      }
+      return statusLogin
+   };
 
    const getDataApi = async () => {
       const newData = await getApi()
       setDataCocktails(newData)
    }
-
-   useEffect(() => {
-      getDataApi()
-   }, [])
-
 
 
    const data = () => {
@@ -64,12 +82,6 @@ const UserProvider = (props: UserProps) => {
       });
    };
 
-   useEffect(
-      () => {
-         data();
-      },
-      []
-   )
 
 
    const createUser = (user: { email: string; password: string, userName: string, name: string }) => {
@@ -92,15 +104,21 @@ const UserProvider = (props: UserProps) => {
    const loginUser = (user: { email: string; password: string }) => {
       signInWithEmailAndPassword(auth, user.email, user.password)
          .then(() => {
-
-            navigate('/cocktails')
+            if (user.email === "admin@admin.adm") {
+               navigate('/admin')
+            }
+            else {
+               navigate('/cocktails')
+            }
          })
          .catch((err: any) => console.log(err));
    };
 
 
-   const state = { homeState, occupiedTables, nameTable, dataCocktails, orders, totalDay,dailySale };
-   const dispatcher = { setHomeState, createUser, loginUser, navigate, setOccupiedTables, setNameTable, setOrders, setTotalDay,setDailySale };
+ 
+
+   const state = { homeState, occupiedTables, nameTable, dataCocktails, orders, totalDay, dailySale, statusLogin };
+   const dispatcher = { setHomeState, createUser, loginUser, navigate, setOccupiedTables, setNameTable, setOrders, setTotalDay, setDailySale };
 
    return (
       <UserDispatcherContext.Provider value={dispatcher}>

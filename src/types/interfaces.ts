@@ -38,7 +38,8 @@ export interface UserState {
     dataCocktails: Cocktail[];
     orders: OrdersTables[]
     totalDay: totalBill[]
-    dailySale:totalDailySale[]
+    dailySale:totalDailySale[],
+    statusLogin: any
 
 }
 
