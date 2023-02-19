@@ -118,7 +118,7 @@ const UserProvider = (props: UserProps) => {
             }
             setHomeState(false);
          })
-         .catch((err: any) => console.log(err.message));
+         .catch((err: any) => alert(err.message));
    };
 
 
@@ -132,7 +132,7 @@ const UserProvider = (props: UserProps) => {
                navigate('/cocktails')
             }
          })
-         .catch((err: any) => console.log(err));
+         .catch((err: any) => alert(err.message));
    };
 
 
