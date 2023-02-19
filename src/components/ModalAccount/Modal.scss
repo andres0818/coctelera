@@ -1,0 +1,35 @@
+@mixin centrar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    @include centrar();
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.308);
+    width: 100%;
+    height: 100%;
+
+    font-size: 14px;
+    z-index: 4;
+
+    &__container {
+        @include centrar();
+        background-color: rgb(253, 253, 253);
+        width: 80%;
+        height: 80%;
+    }
+
+    &__exit{
+        outline: none;
+        border: none;
+        color: white;
+        background-color: rgb(211, 64, 64);
+        font-size: 24px;
+        padding: 1vh;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+}
