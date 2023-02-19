@@ -36,10 +36,11 @@ export interface UserState {
     occupiedTables: number[];
     nameTable: string;
     dataCocktails: Cocktail[];
-    orders: OrdersTables[]
-    totalDay: totalBill[]
-    dailySale:totalDailySale[],
-    statusLogin: any
+    orders: OrdersTables[];
+    totalDay: totalBill[];
+    dailySale:totalDailySale[];
+    newCocktail:Cocktail[];
+    statusLogin: any;
 
 }
 

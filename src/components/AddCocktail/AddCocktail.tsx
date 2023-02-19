@@ -1,25 +1,41 @@
-import React, { useState } from 'react'
+import { addDoc, collection } from 'firebase/firestore';
+import React, { useContext } from 'react'
+import { UserContext } from '../../context/UserContext';
 import { ImgIcon } from '../../img'
+import { db } from '../api/firebase';
 import './AddCocktail.scss'
 
 const AddCocktail = () => {
-  const [newCocktail, setNewCocktail] = useState<any[]>([])
+  const { newCocktail } = useContext(UserContext)
 
   const handlerSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const value = e.currentTarget
-    setNewCocktail(
-      [...newCocktail, {
-        idDrink: value.idDrink.value,
-        strDrinkThumb: value.strDrinkThumb.value,
-        strDrink: value.strDrink.value
-      }]
-    )
-    e.currentTarget.idDrink.value = ''
-    e.currentTarget.strDrinkThumb.value = ''
-    e.currentTarget.strDrink.value = ''
+
+
+    if (!newCocktail.find((e: any) => e.idDrink === value.idDrink.value)) {
+
+      if (!newCocktail.find((e: any) => e.strDrink === value.strDrink.value)) {
+
+        addDoc(collection(db, "cocktails"), {
+          idDrink: value.idDrink.value,
+          strDrinkThumb: value.strDrinkThumb.value,
+          strDrink: value.strDrink.value
+        })
+
+        e.currentTarget.idDrink.value = ''
+        e.currentTarget.strDrinkThumb.value = ''
+        e.currentTarget.strDrink.value = ''
+
+      } else {
+        alert('ya existe ese Nombre')
+      }
+
+    } else {
+      alert('ya existe ese ID')
+    }
   }
-  console.log(newCocktail)
+  
 
   return (
     <div className='AddCocktail'>

@@ -9,6 +9,8 @@ import ReporteVentas from './components/ReporteVentas/ReporteVentas'
 import Mesas from './components/Mesas/Mesas'
 import PedidosMesa from './components/PedidosMesa/PedidosMesa'
 import Admin from './page/admin/Admin'
+import AddCocktail from './components/AddCocktail/AddCocktail'
+import ListCocktails from './components/ListCocktails/ListCocktails'
 
 const Rotuer = () => {
     return (
@@ -22,8 +24,12 @@ const Rotuer = () => {
                 <Route path='/cocktails/factura' element={<Factura />} />
                 <Route path='/cocktails/reporteVentas' element={<ReporteVentas />} />
             </Route>
-            
-            <Route path='/admin' element={<Admin />} />
+
+            <Route path='/admin' element={<Admin />} >
+                <Route path='/admin' element={<AddCocktail />} />
+                <Route path='/admin/list' element={<ListCocktails />} />
+
+            </Route>
             <Route path='*' element={<Home />} />
         </Routes>
     )

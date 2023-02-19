@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
+import { auth } from '../api/firebase'
 import './Navbar.scss'
 
 const Navbar = () => {
@@ -9,7 +10,7 @@ const Navbar = () => {
   const navigate: NavigateFunction = useNavigate()
 
   const handlerFocus = () => {
-    const button = document.querySelector('.nabvar__list') as HTMLButtonElement;
+    const button = document.querySelector('.navbar__list') as HTMLButtonElement;
     setDisplay(button.style.display)
 
     if (display === 'none') {
@@ -24,7 +25,7 @@ const Navbar = () => {
 
 
   const handlerNavigate = (e: any) => {
-    const button = document.querySelector('.nabvar__list') as HTMLButtonElement;
+    const button = document.querySelector('.navbar__list') as HTMLButtonElement;
     button.style.display = 'none';
     setDisplay('none')
     navigate(`${e}`)
@@ -32,20 +33,21 @@ const Navbar = () => {
   }
 
   return (
-    <nav className='nabvar'>
+    <nav className='navbar'>
 
-      <button onClick={handlerFocus} className='nabvar__button'>
+      <button onClick={handlerFocus} className='navbar__button'>
         <div></div>
         <div></div>
         <div></div>
       </button>
 
-      <ul className='nabvar__list'>
+      <ul className='navbar__list'>
         <li onClick={() => handlerNavigate('')} >Mesas</li>
         <li onClick={() => handlerNavigate('pedidosComanda')} >Pedidos (Comanda)</li>
         <li onClick={() => handlerNavigate('factura')} >Factura</li>
         <li onClick={() => handlerNavigate('reporteVentas')} >Reporte Ventas Diarias</li>
       </ul>
+      <button onClick={()=>auth.signOut() } className='navbar__exit'>Salir</button>
     </nav>
   )
 }

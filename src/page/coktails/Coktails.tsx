@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { Outlet } from 'react-router-dom'
 import Nabvar from '../../components/Navbar/Navbar'
 import { UserContext, UserDispatcherContext } from '../../context/UserContext'
@@ -11,7 +11,6 @@ const Coktails = () => {
 
 
   if (statusLogin === null) {
-    console.log('register failed')
     navigate('')
   }
 

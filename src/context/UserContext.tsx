@@ -17,6 +17,7 @@ export const UserContext = createContext<UserState>({
    orders: [],
    totalDay: [],
    dailySale: [],
+   newCocktail: [],
    statusLogin: null,
 });
 export const UserDispatcherContext = createContext<UserDispatcher>({
@@ -45,6 +46,7 @@ const UserProvider = (props: UserProps) => {
    const [totalDay, setTotalDay] = useState<totalBill[]>([])
    const [dailySale, setDailySale] = useState<totalDailySale[]>([])
    const [statusLogin, setStautsLogin] = useState<any>(null)
+   const [newCocktail, setNewCocktail] = useState<any[]>([])
 
    const navigate = useNavigate()
 
@@ -52,10 +54,29 @@ const UserProvider = (props: UserProps) => {
       () => {
          getDataApi()
          data();
-         loginStatus()
+         loginStatus();
+         newDataCocktail();
+         adminCocktailsdata()
       },
       []
    )
+
+   useEffect(
+      () => newDataCocktail(),
+      [newCocktail]
+   )
+
+   const adminCocktailsdata = () => {
+      onSnapshot(collection(db, "cocktails"), (snapshot) => {
+         setNewCocktail(snapshot.docs.map((doc) => { return { ...doc.data()} }))
+      })
+   }
+   
+   const newDataCocktail = () => {
+      newCocktail.map(doc => setDataCocktails(
+         [...dataCocktails, doc]
+      ))
+   }
 
    const loginStatus = async () => {
       try {
@@ -115,9 +136,9 @@ const UserProvider = (props: UserProps) => {
    };
 
 
- 
 
-   const state = { homeState, occupiedTables, nameTable, dataCocktails, orders, totalDay, dailySale, statusLogin };
+
+   const state = { homeState, occupiedTables, nameTable, dataCocktails, orders, totalDay, dailySale, statusLogin, newCocktail };
    const dispatcher = { setHomeState, createUser, loginUser, navigate, setOccupiedTables, setNameTable, setOrders, setTotalDay, setDailySale };
 
    return (
