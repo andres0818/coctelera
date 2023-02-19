@@ -12,12 +12,12 @@ const Admin = () => {
         const { navigate } = useContext(UserDispatcherContext)
     
     
-     /*    if (statusLogin === null) {
+        if (statusLogin === null) {
             navigate('/')
         }
         else if (statusLogin.email !== "admin@admin.adm") {
             auth.signOut()
-        } */
+        } 
       
 
     return (
