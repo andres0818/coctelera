@@ -68,14 +68,14 @@ const UserProvider = (props: UserProps) => {
 
    const adminCocktailsdata = () => {
       onSnapshot(collection(db, "cocktails"), (snapshot) => {
-         setNewCocktail(snapshot.docs.map((doc) => { return { ...doc.data()} }))
+         setNewCocktail(snapshot.docs.map((doc) => { return { ...doc.data(), id:doc.id } }))
       })
    }
    
    const newDataCocktail = () => {
-      newCocktail.map(doc => setDataCocktails(
-         [...dataCocktails, doc]
-      ))
+      setDataCocktails(
+         dataCocktails.concat(newCocktail)
+      )
    }
 
    const loginStatus = async () => {

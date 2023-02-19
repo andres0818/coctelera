@@ -42,7 +42,7 @@ const AddCocktail = () => {
       <h1 className='AddCocktail__title'>Agregar cocktel</h1>
       <img className='AddCocktail__iconImg' src={ImgIcon} alt="" />
       <form className='AddCocktail__form' onSubmit={(e) => handlerSubmit(e)}>
-        <input className='AddCocktail__inputs' required name='idDrink' type="number" placeholder='Id Cocktail' />
+        <input className='AddCocktail__inputs'  required name='idDrink' type="number" placeholder='Id Cocktail'  />
         <input className='AddCocktail__inputs' required name='strDrinkThumb' type="text" placeholder='Url photo' />
         <input className='AddCocktail__inputs' required name='strDrink' type="text" placeholder='Name Cocktail' />
         <button className='AddCocktail__submit' type="submit">Guardar</button>

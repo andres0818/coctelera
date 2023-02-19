@@ -19,6 +19,7 @@ export interface Cocktail {
     strDrinkThumb: string;
     strDrink: string;
     idDrink: number
+    id?: any;
 }
 
 
